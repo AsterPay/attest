@@ -30,8 +30,15 @@ git remote add origin https://github.com/AsterPay/attest.git
 git push -u origin main
 ```
 
+## GitHub Actions note
+
+If `git push` fails with **refusing to allow an OAuth App to create or update workflow** … you need either:
+
+- `gh auth refresh -s workflow` then re-add `.github/workflows/ci.yml`, or  
+- Copy [docs/CI_WORKFLOW.yml](CI_WORKFLOW.yml) into `.github/workflows/ci.yml` in the GitHub web UI / a PAT with `workflow` scope.
+
 ## After push
 
 - Add topics on GitHub: `eu-ai-act`, `typescript`, `compliance`, `cli`, `nodejs`, `asterpay`
 - Pin release **v0.1.0** after npm publish (optional)
-- Enable **Actions** (`.github/workflows/ci.yml` included)
+- Add CI workflow (see above)

@@ -1,10 +1,10 @@
 {
   "name": "@asterpay/attest",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI for Attest — EU AI Act compliance toolkit for TypeScript. Powered by AsterPay.",
   "type": "module",
   "bin": {
-    "attest": "./dist/cli.js"
+    "attest": "bin/attest.mjs"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/AsterPay/attest",
   "dependencies": {
-    "@asterpay/attest-sdk": "file:../sdk",
+    "@asterpay/attest-sdk": "^0.1.0",
     "commander": "^12.1.0"
   },
   "devDependencies": {

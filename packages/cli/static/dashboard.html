@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Attest — Compliance dashboard (local)</title>
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #121a22;
+      --text: #e8eef5;
+      --muted: #8fa3b8;
+      --accent: #3dd6c3;
+      --warn: #f5b84a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #1a2a28 0%, transparent 55%), var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .wrap { max-width: 880px; margin: 0 auto; }
+    h1 { font-size: 1.75rem; margin: 0 0 0.5rem; letter-spacing: -0.02em; }
+    p { color: var(--muted); line-height: 1.55; }
+    .card {
+      background: var(--card);
+      border: 1px solid #223042;
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.25rem;
+    }
+    .countdown {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0.5rem 0 0;
+    }
+    code {
+      background: #0e141c;
+      padding: 0.15rem 0.4rem;
+      border-radius: 6px;
+      font-size: 0.9em;
+    }
+    ul { color: var(--muted); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #1e2d2a;
+      color: var(--warn);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="badge">LOCAL STATIC UI</span>
+    <h1>Attest dashboard</h1>
+    <p>
+      This is a lightweight local dashboard served by <code>attest dashboard</code>.
+      Connect your audit pipeline to Supabase / cloud in Attest Pro (roadmap).
+    </p>
+    <div class="card">
+      <p style="margin:0;color:var(--muted)">Countdown (indicative milestone)</p>
+      <p class="countdown" id="cd">—</p>
+      <p style="margin-top:0.75rem">
+        Confirm enforcement dates and obligations with qualified legal counsel.
+      </p>
+    </div>
+    <div class="card">
+      <h2 style="margin:0 0 0.5rem;font-size:1.1rem">CLI quick actions</h2>
+      <ul>
+        <li><code>attest scan</code> — detect AI SDK imports</li>
+        <li><code>attest check</code> — transparency / logging heuristics</li>
+        <li><code>attest docs -o ./compliance</code> — Annex IV scaffolds</li>
+        <li><code>attest export</code> — export audit JSON</li>
+        <li><code>attest verify</code> — verify hash chain</li>
+      </ul>
+    </div>
+    <footer>
+      Powered by <a href="https://asterpay.io" rel="noopener noreferrer">AsterPay</a>
+      — Trust &amp; settlement layer for AI agent commerce.
+    </footer>
+  </div>
+  <script>
+    (function () {
+      var deadline = new Date('2026-08-02T00:00:00.000Z').getTime();
+      function tick() {
+        var now = Date.now();
+        var ms = deadline - now;
+        var el = document.getElementById('cd');
+        if (!el) return;
+        if (ms <= 0) {
+          el.textContent = 'Past indicative date — verify current rules.';
+          return;
+        }
+        var d = Math.floor(ms / 86400000);
+        var h = Math.floor((ms % 86400000) / 3600000);
+        var m = Math.floor((ms % 3600000) / 60000);
+        el.textContent = d + 'd ' + h + 'h ' + m + 'm';
+      }
+      tick();
+      setInterval(tick, 60000);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Copy into a consuming repo as .github/workflows/attest-compliance.yml
+# Adjust paths if needed. Requires @asterpay/attest on npm (or use npx after publish).
+
+name: attest-compliance
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  attest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Attest CLI
+        run: npm install -g @asterpay/attest@0.1.0
+      - name: Scan & check
+        run: |
+          attest scan -r .
+          attest check -r .

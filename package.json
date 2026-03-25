@@ -1,0 +1,16 @@
+{
+  "name": "attest-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/sdk",
+    "packages/cli"
+  ],
+  "scripts": {
+    "build": "npm run build -w @asterpay/attest-sdk && npm run build -w @asterpay/attest",
+    "typecheck": "npm run typecheck -w @asterpay/attest-sdk && npm run typecheck -w @asterpay/attest",
+    "test": "npm run test -w @asterpay/attest-sdk"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

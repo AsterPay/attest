@@ -1,0 +1,47 @@
+{
+  "name": "@asterpay/attest-sdk",
+  "version": "0.1.0",
+  "description": "EU AI Act compliance toolkit for TypeScript — scanner, risk classification, docs, audit logging.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "eu-ai-act",
+    "compliance",
+    "ai",
+    "gdpr",
+    "audit",
+    "typescript"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AsterPay/attest"
+  },
+  "homepage": "https://github.com/AsterPay/attest",
+  "dependencies": {
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "vitest": "^3.0.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

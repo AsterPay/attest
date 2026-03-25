@@ -1,0 +1,42 @@
+# CI for the Attest repository. If this folder lives inside a larger monorepo,
+# set defaults.run.working-directory to the path of the `attest` package.
+name: attest-ci
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm test
+
+  attest-check-self:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install
+        run: npm install
+      - name: Build CLI
+        run: npm run build
+      - name: Run attest check on repo
+        run: node packages/cli/dist/cli.js check -r .

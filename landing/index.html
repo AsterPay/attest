@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Attest — EU AI Act compliance for TypeScript. Scanner, risk hints, Annex IV scaffolds, audit logs. Powered by AsterPay." />
+  <title>Attest — EU AI Act compliance in one SDK</title>
+  <style>
+    :root {
+      --bg: #070a0f;
+      --fg: #e9f0f7;
+      --muted: #8da0b3;
+      --accent: #5eead4;
+      --card: #101820;
+      --border: #1f2d3d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    .hero {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 2rem;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      letter-spacing: -0.03em;
+      margin: 0 0 0.75rem;
+    }
+    .sub { color: var(--muted); font-size: 1.05rem; max-width: 38rem; }
+    .countdown {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    pre {
+      background: #0c1118;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    code { font-family: ui-monospace, Consolas, monospace; }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+    }
+    .card h2 { margin: 0 0 0.4rem; font-size: 1rem; }
+    .card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+    footer {
+      max-width: 920px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Attest</h1>
+    <p class="sub">
+      EU AI Act compliance toolkit for TypeScript: find AI SDK usage in your repo, heuristic risk hints,
+      Annex IV-style Markdown scaffolds, and tamper-evident audit logs. Not legal advice.
+    </p>
+    <div class="countdown" id="cd" aria-live="polite">—</div>
+    <p class="sub" style="margin-top:0.75rem;font-size:0.9rem">
+      Indicative milestone: 2 August 2026 — confirm obligations with counsel.
+    </p>
+    <pre><code>npm install -g @asterpay/attest
+cd your-project
+attest scan
+attest check
+attest docs -o ./compliance</code></pre>
+    <div class="grid">
+      <div class="card">
+        <h2>Scan</h2>
+        <p>AST-based detection of OpenAI, Anthropic, Google AI, LangChain, and more.</p>
+      </div>
+      <div class="card">
+        <h2>Check</h2>
+        <p>Heuristic signals for transparency, logging, and human oversight patterns.</p>
+      </div>
+      <div class="card">
+        <h2>Document</h2>
+        <p>Generate working-draft technical docs aligned to an Annex IV-style outline.</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    Open source (MIT). Repository: <a href="https://github.com/AsterPay/attest">github.com/AsterPay/attest</a><br />
+    Powered by <a href="https://asterpay.io">AsterPay</a> — trust &amp; settlement for AI commerce.
+  </footer>
+  <script>
+    (function () {
+      var d = new Date('2026-08-02T00:00:00.000Z').getTime();
+      function tick() {
+        var el = document.getElementById('cd');
+        if (!el) return;
+        var ms = d - Date.now();
+        if (ms <= 0) { el.textContent = 'Verify current enforcement dates with legal counsel.'; return; }
+        var day = Math.floor(ms / 864e5);
+        var hr = Math.floor((ms % 864e5) / 36e5);
+        el.textContent = day + ' days, ' + hr + ' hours to 2 Aug 2026 (indicative)';
+      }
+      tick();
+      setInterval(tick, 6e4);
+    })();
+  </script>
+</body>
+</html>
